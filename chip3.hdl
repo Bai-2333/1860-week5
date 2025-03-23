@@ -1,0 +1,8 @@
+CHIP chip3 {
+    IN A, B, C, D;
+    OUT X, Y;
+    
+    PARTS:
+    And(a=A, b=C, out=X);
+    And(a=B, b=D, out=Y);
+}

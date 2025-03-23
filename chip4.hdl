@@ -1,0 +1,8 @@
+CHIP chip4 {
+    IN A, B, C, D;
+    OUT X, Y;
+    
+    PARTS:
+    Not(in=C, out=X);
+    Not(in=D, out=Y);
+}

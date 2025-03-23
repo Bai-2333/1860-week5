@@ -1,0 +1,41 @@
+CHIP chip1 {
+    IN A, B, C, D;
+    OUT X, Y;
+    
+    PARTS:
+    
+
+    //X:
+    Not(in=A, out=notA);
+    Not(in=B, out=notB);
+    Not(in=C, out=notC);
+    Not(in=D, out=notD);
+
+    And(a=A, b=notC, out=AandnotC);
+    And(a=AandnotC, b=notB, out=AandnotBandnotC); 
+    And(a=AandnotC, b=notD, out=AandnotCandnotD); 
+
+    And(a=notA, b=C, out=notAandC);
+    And(a=notAandC, b=notB, out=notAandnotBandC);
+    And(a=notAandC, b=notD, out=notAandCnotD);
+
+
+    And(a=notA, b=notC, out=notAandnotC);
+    And(a=notAandnotC, b=B, out=notAandBandnotC);
+    And(a=notAandBandnotC, b=D, out=notAandBandnotCandD);
+
+    And(a=A, b=B, out=AandB);
+    And(a=AandB, b=C, out=AandBandC);
+    And(a=AandBandC, b=D, out=AandBandCandD);
+
+    Or(a=AandnotBandnotC, b=AandnotCandnotD, out=termX1);
+    Or(a=notAandnotBandC, b=notAandCnotD, out=termX2);
+    Or(a=notAandBandnotCandD, b=AandBandCandD, out=termX3);
+    Or(a=termX1, b=termX2, out=termX4);
+    Or(a=termX3, b=termX4, out=X);
+
+    //Y:
+    And(a=notB, b=D, out=notBandD);
+    And(a=B, b=notD, out=BandnotD);
+    Or(a=notBandD, b=BandnotD, out=Y);
+}

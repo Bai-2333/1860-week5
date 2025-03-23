@@ -1,0 +1,8 @@
+CHIP chip2 {
+    IN A, B, C, D;
+    OUT X, Y;
+    
+    PARTS:
+    Or(a=A, b=C, out=X);
+    Or(a=B, b=D, out=Y);
+}
