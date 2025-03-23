@@ -3,10 +3,10 @@ CHIP A5Q2<201860153> {
     OUT F;
 
     PARTS:
-    Not(in=Q,out=notQ);
-    Not(in=L,out=notL);
-    And(a=notQ,b=notL,out=term1);
-    Or(a=notQ,b=L,out=term2);
-    Or(a=term1,b=term2,out=term3);
-    And(a=term3,b=D,out=F);
+    Not(in=Q, out=notQ);
+    Not(in=L, out=notL);
+    And(a=notQ, b=D, out=term1);
+    And(a=notL, b=Q, out=term2);
+    Or(a=term1, b=term2, out=term3);
+    Xor(a=term3, b=L, out=F);
 }
